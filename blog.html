@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Rental System</title>
+    <link rel="stylesheet" href="blog.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Ensures the background image covers the full screen height */
+    background-image: url("bot1.jpg");
+    background-size:cover; /* Makes the image cover the entire background */
+    background-position: center;
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #4fc3dc;
+            margin-bottom: 20px;
+        }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .tab {
+            background-color: #4fc3dc;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .tab:hover {
+            background-color: #3fb4c6;
+            transform: translateY(-3px);
+        }
+
+        .tab:focus {
+            outline: none;
+        }
+
+        .rental-container {
+            width: 400px; /* Width for the square container */
+            height: 400px; /* Height for the square container */
+            background-color: lightgray; /* Light gray background */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px; /* Optional: round corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .rental-section {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .rental-section.active {
+            display: block;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        li {
+            background-color: rgba(241, 241, 241, 0.8); /* Make list items semi-transparent */
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        li:hover {
+            background-color: rgba(224, 224, 224, 0.9);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .tab-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .tab {
+                width: 100%;
+                text-align: center;
+            }
+
+            .rental-container {
+                width: 90vw; /* Responsive width */
+                height: 90vw; /* Keep it square */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Vehicle Rental System</h1>
+        <div class="tab-container">
+            <button class="tab" onclick="showSection('two-wheeler')">Two-Wheeler</button>
+            <button class="tab" onclick="showSection('four-wheeler')">Four-Wheeler</button>
+        </div>
+    </header>
+
+    <div class="rental-container">
+        <section id="two-wheeler" class="rental-section active">
+            <h2>Rent a Bike</h2>
+            <p>Choose from a variety of two-wheelers available at affordable prices.</p>
+            <ul>
+                <li>Honda Activa - ₹400/day</li>
+                <li>Bajaj Pulsar - ₹500/day</li>
+                <li>Royal Enfield - ₹800/day</li>
+            </ul>
+        </section>
+
+        <section id="four-wheeler" class="rental-section">
+            <h2>Rent a Car</h2>
+            <p>Select from a wide range of four-wheelers perfect for long drives.</p>
+            <ul>
+                <li>Maruti Swift - ₹1500/day</li>
+                <li>Hyundai i20 - ₹1800/day</li>
+                <li>Toyota Innova - ₹2500/day</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.rental-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Login & Sign Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(120deg, #3498db, #8e44ad);
+        }
+
+        .container {
+            width: 500px; /* Increased width */
+            height: 600px; /* Increased height */
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-box {
+            width: 400px; /* Adjusted form-box width */
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+
+        .button-box {
+            width: 250px; /* Increased button-box width */
+            margin: 35px auto;
+            position: relative;
+            box-shadow: 0 0 20px 9px #ff61241f;
+            border-radius: 30px;
+        }
+
+        .toggle-btn {
+            padding: 10px 40px; /* Adjusted button padding */
+            cursor: pointer;
+            background: transparent;
+            border: 0;
+            outline: none;
+            position: relative;
+        }
+
+        #btn {
+            position: absolute;
+            width: 125px; /* Adjusted button width */
+            height: 100%;
+            background: linear-gradient(to right, #3498db, #8e44ad);
+            border-radius: 30px;
+            transition: .5s;
+        }
+
+        .social-icons {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .social-icons img {
+            width: 30px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .input-group {
+            top: 180px;
+            position: absolute;
+            width: 350px; /* Increased input group width */
+            transition: .5s;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px 0;
+            margin: 5px 0;
+            border-left: 0;
+            border-top: 0;
+            border-right: 0;
+            border-bottom: 2px solid #3498db;
+            outline: none;
+            background: transparent;
+        }
+
+        .check-box {
+            margin: 30px 10px 30px 0;
+        }
+
+        span {
+            color: #777;
+            font-size: 12px;
+            bottom: 68px;
+            position: relative;
+        }
+
+        .submit-btn {
+            width: 85%;
+            padding: 10px 30px;
+            cursor: pointer;
+            display: block;
+            margin: auto;
+            background: linear-gradient(to right, #3498db, #8e44ad);
+            border: 0;
+            outline: none;
+            border-radius: 30px;
+            color: white;
+            font-weight: bold;
+            transition: 0.2s ease-in;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(to right, #8e44ad, #3498db);
+        }
+
+        /* Login form visibility */
+        #login-form {
+            left: 50px;
+            position: absolute;
+        }
+
+        #signup-form {
+            left: -450px;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="showLogin()">Login</button>
+                <button type="button" class="toggle-btn" onclick="showSignup()">Sign Up</button>
+            </div>
+            <div class="social-icons">
+                <img src="https://img.icons8.com/color/48/000000/google-logo.png"/>
+                <img src="https://img.icons8.com/color/48/000000/facebook-new.png"/>
+                <img src="https://img.icons8.com/color/48/000000/twitter.png"/>
+            </div>
+            <form id="login-form" class="input-group" method="POST" action="/login">
+                <input type="email" name="email" class="input-field" placeholder="Email" required>
+                <input type="password" name="password" class="input-field" placeholder="Enter Password" required>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="remember-me" class="check-box">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+            <form id="signup-form" class="input-group" method="POST" action="/register">
+                <input type="text" name="name" class="input-field" placeholder="Full Name" required>
+                <input type="email" name="email" class="input-field" placeholder="Email" required>
+                <input type="password" name="password" class="input-field" placeholder="Enter Password" required>
+                <input type="password" class="input-field" placeholder="Confirm Password" required>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" class="check-box" required>
+                    <label for="terms">I agree to the terms & conditions</label>
+                </div>
+                <button type="submit" class="submit-btn">Sign Up</button>
+            </form>
+            
+        </div>
+    </div>
+
+    <script>
+        function showLogin() {
+            document.getElementById("login-form").style.left = "50px";
+            document.getElementById("signup-form").style.left = "-450px";
+            document.getElementById("btn").style.left = "0";
+        }
+
+        function showSignup() {
+            document.getElementById("login-form").style.left = "-450px";
+            document.getElementById("signup-form").style.left = "50px";
+            document.getElementById("btn").style.left = "125px";
+        }
+    </script>
+</body>
+</html>

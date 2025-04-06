@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>/* General body styling */
+        /* General body styling */
+ body {
+     font-family: 'Arial', sans-serif;
+     background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+     margin: 0;
+     padding: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     transition: background 0.5s ease;
+ }
+ 
+ h1 {
+     color: #333;
+     text-align: center;
+     font-size: 2.5rem;
+     margin-bottom: 20px;
+ }
+ 
+ /* Enhanced styling for paragraphs */
+ p {
+     text-align: center;
+     color: #555;
+     font-size: 1.2rem;
+     margin-bottom: 30px;
+ }
+ 
+ /* Payment form container */
+ form {
+     background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+     backdrop-filter: blur(10px); /* Blurring effect for the background */
+     padding: 30px;
+     border-radius: 15px;
+     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+     max-width: 400px;
+     width: 100%;
+     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+ }
+ 
+ form:hover {
+     transform: scale(1.02); /* Slight scaling on hover */
+     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+ }
+ 
+ label {
+     display: block;
+     font-weight: bold;
+     color: #333;
+     margin-bottom: 8px;
+ }
+ 
+ /* Styling for select and input elements */
+ select, input[type="submit"] {
+     width: 100%;
+     padding: 15px;
+     margin-bottom: 20px;
+     border-radius: 8px;
+     border: 1px solid #ccc;
+     font-size: 1rem;
+     color: #333;
+     background-color: #f9f9f9;
+     transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus */
+ }
+ 
+ select:focus, input[type="submit"]:focus {
+     outline: none;
+     border-color: #74ebd5;
+     box-shadow: 0 0 10px rgba(116, 235, 213, 0.5);
+ }
+ 
+ /* Submit button styling */
+ input[type="submit"] {
+     background-color: #74ebd5;
+     border: none;
+     color: white;
+     font-weight: bold;
+     cursor: pointer;
+     transition: background-color 0.3s ease, transform 0.2s ease; /* Include transform for hover */
+     padding: 15px; /* Increased padding for better click area */
+ }
+ 
+ input[type="submit"]:hover {
+     background-color: #4dc0b5;
+     transform: translateY(-2px); /* Slight lift effect */
+ }
+ 
+ /* Responsive design */
+ @media (max-width: 768px) {
+     form {
+         padding: 20px;
+         max-width: 90%;
+     }
+ 
+     h1 {
+         font-size: 2rem;
+     }
+ 
+     p {
+         font-size: 1rem; /* Adjust paragraph font size for smaller screens */
+     }
+ }
+ 
+ /* Footer for additional info */
+ footer {
+     text-align: center;
+     color: #555;
+     margin-top: 20px;
+     font-size: 0.9rem;
+ }
+ 
+         </style>
+    <script>
+        window.onload = function() {
+            // Retrieve the selected offer from local storage
+            const selectedOffer = JSON.parse(localStorage.getItem('selectedOffer'));
+            if (selectedOffer) {
+                document.getElementById('offer-title').innerText = selectedOffer.title;
+                document.getElementById('offer-details').innerText = selectedOffer.details;
+                document.getElementById('offer-amount').innerText = `Amount: $${selectedOffer.amount}`;
+            } else {
+                // Handle the case where no offer is selected
+                document.getElementById('offer-title').innerText = "No Offer Selected";
+                document.getElementById('offer-details').innerText = "";
+                document.getElementById('offer-amount').innerText = "";
+            }
+        };
+
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent the default form submission
+            const paymentMethod = document.getElementById('payment-method').value;
+            localStorage.setItem('selectedPaymentMethod', paymentMethod);
+            // Redirect to the payment options page
+            window.location.href = 'payment_options.html';
+        }
+    </script>
+</head>
+<body>
+    <h1>Payment for Vehicle Rental</h1>
+    
+    <div>
+        <h2 id="offer-title"></h2>
+        <p id="offer-details"></p>
+        <p id="offer-amount"></p>
+    </div>
+
+    <p>Select your payment method:</p>
+    
+    <form onsubmit="handleSubmit(event)"> <!-- Handle form submission with JavaScript -->
+        <label for="payment-method">Payment Method:</label>
+        <select id="payment-method" name="payment-method" required>
+            <option value="" disabled selected>Select a method</option>
+            <option value="credit-card">Credit Card</option>
+            <option value="debit-card">Debit Card</option>
+            <option value="upi">UPI</option>
+        </select>
+        <input type="submit" value="Proceed to Pay">
+    </form>
+
+    <footer>
+        &copy; 2024 Vehicle Rental Service
+    </footer>
+</body>
+</html>
