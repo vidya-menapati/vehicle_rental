@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Rental Offers</title>
+    <link rel="stylesheet" href="offers.css">
+    <script>
+        function handleOfferClick(offerTitle, offerDetails) {
+            // Store selected offer in local storage
+            localStorage.setItem('selectedOffer', JSON.stringify({ title: offerTitle, details: offerDetails }));
+            // Redirect to the payment page
+            window.location.href = 'payment.html'; // Update with your actual payment page URL
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>Exclusive Offers on Vehicle Rentals</h1>
+    </header>
+
+    <section class="offers-section">
+        <div class="offer-card">
+            <h2>Get 20% Off on Bike Rentals!</h2>
+            <p>Rent any two-wheeler for 3 days or more and enjoy a flat 20% discount. Perfect for your weekend adventures!</p>
+            <button class="offer-btn" onclick="handleOfferClick('20% Off on Bike Rentals', 'Rent any two-wheeler for 3 days or more and enjoy a flat 20% discount.')">Book Now</button>
+        </div>
+
+        <div class="offer-card">
+            <h2>Free Extra Day on Car Rentals</h2>
+            <p>Rent a car for 5 days and get the 6th day absolutely free! This offer is valid for all four-wheeler rentals.</p>
+            <button class="offer-btn" onclick="handleOfferClick('Free Extra Day on Car Rentals', 'Rent a car for 5 days and get the 6th day absolutely free!')">Book Now</button>
+        </div>
+
+        <div class="offer-card">
+            <h2>Special Offer: ₹100 Off on First Booking!</h2>
+            <p>First-time users can enjoy an additional ₹100 discount on their first booking. Use promo code <strong>FIRST100</strong>.</p>
+            <button class="offer-btn" onclick="handleOfferClick('₹100 Off on First Booking', 'First-time users can enjoy an additional ₹100 discount on their first booking. Use promo code FIRST100.')">Claim Offer</button>
+        </div>
+    </section>
+
+</body>
+</html>

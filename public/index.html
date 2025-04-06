@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Rental System</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Global reset and styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url("bot.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        /* Basic styles for navigation bar */
+        .top-bar {
+            background-color: #4fc3dc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            color: #fff;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            border-radius: 25px;
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
+        }
+
+        .logo a {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nav-menu li a:hover {
+            color: #333;
+        }
+
+        .login-btn {
+            background-color: #181818;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #333;
+            transform: translateY(-3px);
+        }
+
+        .location {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .top-bar:hover {
+            background-color: #3fb4c6;
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                gap: 15px;
+            
+            }
+
+            .location {
+                margin-top: 10px;
+                text-decoration: none;
+            }
+        }
+
+        .hero-section {
+            margin-top: 80px;
+            background-image: url('https://source.unsplash.com/1600x900/?car,rent');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero-section h1 {
+            font-size: 4rem;
+            animation: slideDown 1s ease-in-out;
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            animation: slideUp 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            background-color: #181818;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="top-bar">
+            <div class="logo">
+                <img src="log.jpg" alt="Logo">
+                <a href="index.html">Vehicle Rental</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="blog.html">Rent</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="offers.html">Offers</a></li>
+                <li><a href="review.html">Reviews</a></li>
+            </ul>
+            <div id="auth-section">
+                <a href="login.html">Login / Register</a>
+                <a href="/logout" class="logout-btn" style="display: none;">Logout</a>
+
+                <a href="#" class="location" style="text-decoration: none;">📍 Chennai</a>
+              </div>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <div>
+            <h1>Find Your Perfect Ride</h1>
+            <p>Explore, Book, and Enjoy Your Journey with Us!</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Vehicle Rental System. All rights reserved.</p>
+    </footer>
+    <script>
+        fetch('/user')
+          .then(res => res.json())
+          .then(data => {
+            if (data.loggedIn) {
+              document.getElementById('auth-section').innerHTML = `
+                <span style="font-weight: bold;">👋 Hello, ${data.name}</span>
+              `;
+            }
+          });
+      </script>
+      
+</body>
+
+</html>
